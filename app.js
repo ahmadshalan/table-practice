@@ -2,18 +2,12 @@
 
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-
-// function random(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-
-
 function randomCustomers(min, max) {
 
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-let cities = [Amman,Jerusalem];
+let cities = [];
 
 function Cities(name, minCookies, maxCookies, avgCookies) {
 
@@ -42,35 +36,25 @@ Cities.prototype.calcCookiesEachHour = function () {
 
         this.total += this.CookiesEachHour[i];
     }
-
 }
-
 let Amman = new Cities('Amman', 2, 8, 4);
 let Jerusalem = new Cities('Jerusalem', 4, 10, 6);
 
-
 console.log(cities);
-
 console.log(hours);
-
-
 
 let parent = document.getElementById('container');
 let table1 = document.createElement('table');
 
 parent.appendChild(table1);
-
 console.log(table1);
 
 function makeHeader() {
-
     let thead = document.createElement('tr');
-
     table1.appendChild(thead);
     let nameFactor = document.createElement('th')
     thead.appendChild(nameFactor);
     nameFactor.textContent = 'name';
-
 
     for (let i = 0; i < hours.length; i++) {
 
@@ -101,16 +85,11 @@ Cities.prototype.render = function () {
         let td = document.createElement('td');
         cityName.appendChild(td);
         td.textContent = this.CookiesEachHour[i];
-
     }
-
     let totalForEachShop = document.createElement('td');
     cityName.appendChild(totalForEachShop);
     totalForEachShop.textContent = this.total;
-
 }
-
-
 
 let makeFooter = function () {
 
@@ -120,38 +99,31 @@ let makeFooter = function () {
     footerRow.appendChild(footerTh);
     footerTh.textContent = 'Totals'
 
-    let megaTotal=0;
+    let megaTotal = 0;
     for (let i = 0; i < hours.length; i++) {
 
         let totalEachHour = 0;
-        for (let j=0; j < cities.length; i++) {
+        for (let j = 0; j < cities.length; j++) {
 
             totalEachHour += cities[j].CookiesEachHour[i];
-            megaTotal+=cities[j].CookiesEachHour[i];
+            megaTotal += cities[j].CookiesEachHour[i];
         }
         footerTh = document.createElement('th');
         footerRow.appendChild(footerTh);
         footerTh.textContent = totalEachHour;
     }
-let final= document.createElement('th');
-footerRow.appendChild(final);
-final.textContent=megaTotal;
-    
+    let final = document.createElement('th');
+    footerRow.appendChild(final);
+    final.textContent = megaTotal;
 }
-
-
 for (let i = 0; i < cities.length; i++) {
-    
     cities[i].getCustomersEachHour();
     cities[i].calcCookiesEachHour();
     cities[i].render();
-    
 }
 makeFooter();
 
-    //     console.log(time);
 
-    // }
 
 
 
