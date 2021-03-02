@@ -123,10 +123,73 @@ for (let i = 0; i < cities.length; i++) {
 }
 makeFooter();
 
+// new table
+
+let a=[1,2,3,4,5,6,7];
+let b = ['a','b','c','d','e','f','g'];
+
+let table2=document.getElementById('table2');
+
+let table3=document.createElement('table');
+
+table2.appendChild(table3);
+console.log(table3);
+
+let th = document.createElement('tr');
+    table3.appendChild(th);
+    
+    for(let i=0 ; i<a.length ; i++){
+        
+        let no = document.createElement('th')
+        th.appendChild(no);
+        no.textContent = a[i];
+    }
+
+let num = document.createElement('tr');
+table3.appendChild(num);
+
+for(let j=0 ; j<b.length ; j++ ){
+
+let m = document.createElement('td')
+num.appendChild(m);
+m.textContent=b[j];
+};
 
 
+// creating a construtor function 
+
+let studentName=[];
+function Students (name, height, weight){
+
+this.name = name;
+this.height = height;
+this.weight = weight;
+studentName.push(this);
+
+}
+
+let ahmad = new Students('ahmad',180, 100);
+let omar = new Students('Omar',150 , 45);
+console.log(studentName);
 
 
+Students.prototype.render =function(){
+
+let tab=document.getElementById('StudensTable');
+let table4 = document.createElement('table');
+tab.appendChild(table4);
+console.log(table4);
+let head= document.createElement('tr');
+table4.appendChild(head);
+let aka;
+let m;
+for ( m=0 ; m<studentName.length ; m++)
+ aka = document.createElement('th');
+head.appendChild(aka);
+aka.textContent=this.name;
+}
+
+this.name.render();
 
 
 
